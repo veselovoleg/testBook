@@ -1,4 +1,4 @@
-import { mount } from 'vue-test-utils'
+import { mount } from '@vue/test-utils'
 import MessageToggle from '@/components/MessageToggle.vue'
 
 describe('MessageToggle.vue', () => {
