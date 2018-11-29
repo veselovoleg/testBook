@@ -1,16 +1,25 @@
 <template>
   <div id="app">
-    <page></page>
+    <h1>Hello</h1>
+    <MessageList :messages="messages"/>
   </div>
 </template>
 
 <script>
-import Page from './components/Page'
+import MessageList from './components/MessageList'
 
 export default {
   name: 'app',
+  data: () => ({ messages: ['Hey John', 'Howdy Paco'] }),
   components: {
-    Page
+    MessageList
   }
 }
 </script>
+
+<style>
+#app {
+  text-align: center;
+}
+</style>
+
