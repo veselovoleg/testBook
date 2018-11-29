@@ -3,7 +3,9 @@
   class="message" 
   style="margin-top: 10px"
   @click="handleClick"
-  >{{ message }}</li>
+  >
+    {{ message }}
+  </li>
 </template>
 
 <script>

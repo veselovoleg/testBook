@@ -32,11 +32,19 @@ describe("Message.test.js", () => {
             expect(wrapper.element).toMatchSnapshot();
         });
 
-        it("calls handleClick when click on message", () => {
+        it("calls handleClick", () => {
             const spy = jest.spyOn(wrapper.vm, 'handleClick');
-            expect(wrapper.contains('.message')).toBe(true);
             wrapper.vm.handleClick();
             expect(spy).toHaveBeenCalled();
         });
+
+        it("calls handleClick when click on message", () => {
+            //Function in component
+            wrapper.vm.handleClick = jest.fn();
+            expect(wrapper.contains('.message')).toBe(true);
+
+            wrapper.find('.message').trigger('click');
+            expect(wrapper.vm.handleClick).toHaveBeenCalledTimes(1);
+        })
     });
 });
