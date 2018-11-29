@@ -1,6 +1,6 @@
 <template>
-    <ul>
-        <li v-for="item in items">
+    <ul class="parent-ul">
+        <li v-for="(item, index) in items" :key="index">
             {{ item }}
         </li>
     </ul>

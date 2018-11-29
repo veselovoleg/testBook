@@ -8,7 +8,7 @@ describe('List.vue', () => {
     const wrapper = shallowMount(List, {
       propsData: { items }
     })
-    expect(wrapper.findAll('li')).toHaveLength(items.length)
+    expect(wrapper.findAll('.parent-ul li')).toHaveLength(items.length)
   })
 
   it('has same HTML structure', () => {
