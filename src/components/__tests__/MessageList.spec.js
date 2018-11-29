@@ -18,4 +18,12 @@ describe("MessageList.test.js", () => {
     it("has the expected html structure", () => {
         expect(wrapper.element).toMatchSnapshot();
     });
+
+    it("Message component has the .message class", () => {
+        expect(wrapper.find("li").classes()).toContain("message");
+    });
+
+    it("Message component has style padding-top: 10", () => {
+        expect(wrapper.find(".message").attributes().style).toBe("margin-top: 10px;");
+      });
 });
