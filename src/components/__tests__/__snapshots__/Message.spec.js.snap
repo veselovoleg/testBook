@@ -5,6 +5,8 @@ exports[`Message.test.js Events has the expected html structure 1`] = `
   class="message"
   style="margin-top: 10px;"
 >
+  
   Cat
+
 </li>
 `;
