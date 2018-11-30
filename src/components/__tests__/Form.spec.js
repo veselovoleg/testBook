@@ -1,7 +1,3 @@
-jest.mock("axios", () => ({
-    get: jest.fn(() => Promise.resolve({ data: [3] }))
-}));
-
 import axios from 'axios';
 import { shallowMount } from "@vue/test-utils";
 import Form from "@/components/Form.vue";

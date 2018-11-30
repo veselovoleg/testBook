@@ -88,6 +88,9 @@
       "^.+\\.js$": "<rootDir>/node_modules/babel-jest",
       ".*\\.(vue)$": "<rootDir>/node_modules/vue-jest"
     },
+    "testMatch": [
+      "**/__tests__/*.spec.(js|jsx|ts|tsx)|**/"
+    ],
     "snapshotSerializers": [
       "<rootDir>/node_modules/jest-serializer-vue"
     ]
