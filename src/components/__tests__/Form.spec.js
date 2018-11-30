@@ -4,18 +4,20 @@ import Form from "@/components/Form.vue";
 
 describe("Form.test.js", () => {
     let wrapper;
+
     beforeEach(() => {
         wrapper = shallowMount(Form);
         jest.resetModules();
         jest.clearAllMocks();
     });
 
+    
     describe("Axios call onSubmit", () => {
         it("Calls axios.get and checks promise result", async () => {
             const result = await wrapper.vm.onSubmit("an");
             expect(result).toEqual({ data: [3] });
             expect(wrapper.vm.results).toEqual([3]);
-            expect(axios.getResults).toBeCalledWith(
+            expect(axios.get).toBeCalledWith(
                 "https://jsonplaceholder.typicode.com/posts?q=an"
             );
         });
@@ -24,7 +26,7 @@ describe("Form.test.js", () => {
     describe("Axios call getTask", () => {
         it("Calls axios.get and checks promise result", async () => {
             const result = await wrapper.vm.getTask("1");
-        
+
             expect(result).toEqual({
                 data: {
                     "userId": 1,
@@ -33,13 +35,13 @@ describe("Form.test.js", () => {
                     "completed": false
                 }
             });
-            expect(wrapper.vm.task).toEqual( {
+            expect(wrapper.vm.task).toEqual({
                 "userId": 1,
                 "id": 1,
                 "title": "delectus aut autem",
                 "completed": false
             });
-            expect(axios.getTask).toBeCalledWith(
+            expect(axios.get).toBeCalledWith(
                 "https://jsonplaceholder.typicode.com/todos/1"
             );
         });

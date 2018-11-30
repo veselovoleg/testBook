@@ -2,11 +2,13 @@
   <div id="app">
     <h1>Hello</h1>
     <MessageList :messages="messages"/>
+    <Form />
   </div>
 </template>
 
 <script>
 import MessageList from './components/MessageList'
+import Form from './components/Form'
 
 export default {
   name: 'app',
@@ -17,7 +19,8 @@ export default {
     }
   },
   components: {
-    MessageList
+    MessageList,
+    Form
   }
 }
 </script>

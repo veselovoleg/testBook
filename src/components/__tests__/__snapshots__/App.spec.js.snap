@@ -11,5 +11,7 @@ exports[`App.test.js has the expected html structure 1`] = `
   <messagelist-stub
     messages="Cat"
   />
+   
+  <form-stub />
 </div>
 `;
