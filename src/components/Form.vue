@@ -16,14 +16,24 @@ export default {
   props: ['reversed'],
   data: () => ({
     inputValue: "",
-    results: []
+    results: [],
+    task: {}
   }),
   methods: {
         onSubmit(value) {
-            const getPromise = axios.get("https://jsonplaceholder.typicode.com/posts?q=" + value)
+            const getPromise = axios.getResults("https://jsonplaceholder.typicode.com/posts?q=" + value)
             getPromise.then(
                 results => {  
                     this.results = results.data
+                }
+            )
+            return getPromise
+        },
+         getTask(value) {
+            const getPromise = axios.getTask("https://jsonplaceholder.typicode.com/todos/" + value)
+            getPromise.then(
+                results => {  
+                    this.task = results.data
                 }
             )
             return getPromise
