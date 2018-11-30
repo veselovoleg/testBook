@@ -1,3 +1,8 @@
+jest.mock("axios", () => ({
+    get: jest.fn(() => Promise.resolve({ data: [3] }))
+}));
+
+import axios from 'axios';
 import { shallowMount } from "@vue/test-utils";
 import Form from "@/components/Form.vue";
 
@@ -5,6 +10,19 @@ describe("Form.test.js", () => {
     let wrapper;
     beforeEach(() => {
         wrapper = shallowMount(Form);
+        jest.resetModules();
+        jest.clearAllMocks();
+    });
+
+    describe("Axios call", () => {
+        it("Calls axios.get and checks promise result", async () => {
+            const result = await wrapper.vm.onSubmit("an");
+            expect(result).toEqual({ data: [3] });
+            expect(wrapper.vm.results).toEqual([3]);
+            expect(axios.get).toBeCalledWith(
+                "https://jsonplaceholder.typicode.com/posts?q=an"
+            );
+        });
     });
 
     describe("Properties", () => {
@@ -32,12 +50,7 @@ describe("Form.test.js", () => {
         afterEach(() => {
             spy.mockClear();
         });
-        it("is not called if value is empty (trimmed)", () => {
-            // TODO
-        });
-        it("is not called if values are the same", () => {
-            // TODO
-        });
+
         it("is called with the new value in other cases", () => {
             wrapper.setData({ inputValue: "foo" });
             expect(spy).toBeCalled();

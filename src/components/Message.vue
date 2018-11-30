@@ -20,7 +20,6 @@ export default {
   methods: {
     handleClick () {
       this.$emit('message-clicked', this.message)
-      console.log('handleClick was called')
     }
   }
 }
