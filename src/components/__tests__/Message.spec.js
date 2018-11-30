@@ -37,15 +37,18 @@ describe("Message.test.js", () => {
             expect(spy).toHaveBeenCalled();
         });
 
-        //NOT WORKING. WHY?
-        /*
-        it("calls handleClick when click on message", () => {
-            wrapper.vm.handleClick = jest.fn();
-            expect(wrapper.contains('.message')).toBe(true);
-
-            wrapper.find('.message').trigger('click');
-            expect(wrapper.vm.handleClick).toHaveBeenCalledTimes(1);
+        it('calls handleClick when click on message', () => {
+            const handleClick = jest.fn()
+            wrapper.setMethods({ handleClick })
+            const el = wrapper.find('.message').trigger('click')
+            expect(handleClick).toBeCalled()
         })
-        */
+
+        it('triggers a message-clicked event when a handleClick method is called', () => {
+            const stub = jest.fn()
+            wrapper.vm.$on('message-clicked', stub)
+            wrapper.vm.handleClick()
+            expect(stub).toBeCalledWith('Cat')
+        })
     });
 });
